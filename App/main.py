@@ -101,7 +101,7 @@ class Login:
     def register (self):
         self.window_register = Toplevel ()
         self.window_register.title ("Register")
-        self.window_register.geometry ("1100x765")
+        self.window_register.geometry ("1097x765")
         self.window_register.iconbitmap ("App/media/img/icon/icon_Logo.ico")
         self.window_register.resizable (False, False)
         self.window_register.config (background="#006666")
@@ -154,24 +154,28 @@ class Login:
         Label (self.container_register, text="Date of birth *", font=("Cambria 12 bold")).grid (row=15, column=0, columnspan=2, pady=8, sticky=W, padx=5)
 
         self.frame1 = Frame (self.container_register)
-        self.frame1.grid (row=16, column=0, columnspan=2, sticky=W+E, padx=40)
+        self.frame1.grid (row=16, column=0, columnspan=2, sticky=W+E, padx=10)
 
         self.day = ttk.Combobox (self.frame1, values=("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"),  width=9, font=("Cambria 12"))
-        self.day.grid (row=0, column=0, sticky=W+E, ipady=3, pady=3, padx=8)
+        self.day.grid (row=0, column=0, sticky=W+E, ipady=3, pady=3, padx=15)
         self.month = ttk.Combobox (self.frame1, values=("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"), width=10, font=("Cambria 12"))
-        self.month.grid (row=0, column=1, sticky=W+E, ipady=3, pady=3, padx=8)
+        self.month.grid (row=0, column=1, sticky=W+E, ipady=3, pady=3, padx=15)
         self.year = ttk.Combobox (self.frame1, values=("1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980","1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2005", "2006", "2007", "2008", "2009","2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"),  width=9, font=("Cambria 12"))
-        self.year.grid (row=0, column=2, sticky=W+E, ipady=3, pady=3, padx=8)
+        self.year.grid (row=0, column=2, sticky=W+E, ipady=3, pady=3, padx=15)
 
+        Label (self.container_register, text="Sex *", font=("Cambria 12 bold")).grid (row=17, column=0, columnspan=2, pady=3, sticky=W, padx=20)
 
-        Label (self.container_register, text="Sex *", font=("Cambria 12 bold")).grid (row=17, column=0, columnspan=2, pady=3, sticky=W, padx=5)
-
+        self.frame_sex = Frame (self.container_register)
+        self.frame_sex.grid (row=18, column=0, columnspan=2, padx=10)
         self.option = StringVar ()
-        self.women = Radiobutton (self.container_register, text="Woman", variable=self.option, value="Woman", font=("Cambria 12"))
-        self.women.grid (row=18, column=0, padx=5)
+        self.women = Radiobutton (self.frame_sex, text="Woman", variable=self.option, value="Woman", font=("Cambria 12"))
+        self.women.grid (row=0, column=0, padx=20)
 
-        self.man = Radiobutton (self.container_register, text="Man", variable=self.option, value="Man", font=("Cambria 12"))
-        self.man.grid (row=18, column=1, padx=5)
+        self.man = Radiobutton (self.frame_sex, text="Man", variable=self.option, value="Man", font=("Cambria 12"))
+        self.man.grid (row=0, column=1, padx=20)
+
+        self.other = Radiobutton (self.frame_sex, text="Others", variable=self.option, value="Others", font=("Cambria 12"))
+        self.other.grid (row=0, column=2, padx=20)
 
         robot = IntVar ()
         self.check = Checkbutton (self.container_register, text="I am not a robot", variable=robot, onvalue=1, offvalue=0, font=("Cambria 12 bold"), foreground="Blue")
